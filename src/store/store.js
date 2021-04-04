@@ -5,7 +5,8 @@ import {mockData} from './mock-data'
 export const store = createStore({
   state: {
     Variants: mockData.variants,
-    Reviews: []
+    Reviews: [],
+    Cart: 0,
   },
   mutations: {
     

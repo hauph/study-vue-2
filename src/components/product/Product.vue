@@ -1,15 +1,42 @@
 <template>
-  <Image />
+  <div class="product-image">
+    <Image />
+  </div>
+  <div class="product-info">
+    <Info />  
+    <Variant /> 
+    <button>Add to cart</button>
+  </div>
 </template>
 
 <script>
-import Image from './image/Image'
+import Image from './image/Image';
+import Info from './info/Info';
+import Variant from './variant/Variant';
+import './Product.scss'
 
 export default {
   name: 'Product',
   components: {
-    Image
-  }
+    Image,
+    Info,
+    Variant
+  },
+  data() {
+    return {
+      selectedVariant: {},
+    };
+  },
+  methods: {
+    updateSelectedVariant(id) {
+      this.selectedVariant = this.Variants.find(variant => variant.id === id)
+    }
+  },
+  computed: {
+    Variants() {
+      return this.$store.state.Variants;
+    },
+  },
 }
 </script>
 
