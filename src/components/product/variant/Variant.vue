@@ -1,27 +1,24 @@
 <template>
-    <p>variant</p>
+  <div class="color-circle" style="background-color: blue;" data-id="1"></div>
+  <div class="color-circle" style="background-color: green;" data-id="2"></div>
 </template>
 
 <script>
 export default {
   name: 'Variant',
+  props: {
+    id: {type: String}
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* h3 {
-  margin: 40px 0 0;
+.color-circle {
+  width: 50px;
+  height: 50px;
+  margin-top: 8px;
+  border: 2px solid #d8d8d8;
+  border-radius: 50%;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-} */
 </style>

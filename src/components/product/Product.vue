@@ -1,35 +1,41 @@
 <template>
   <div class="product-image">
-    <Image />
+    <Image :src="imgSrc" />
   </div>
-  <div class="product-info">
-    <Info />  
-    <Variant /> 
-    <button>Add to cart</button>
-  </div>
+  <product-info :variant="selectedVariant"></product-info>
 </template>
 
 <script>
 import Image from './image/Image';
-import Info from './info/Info';
-import Variant from './variant/Variant';
-import './Product.scss'
+import ProductInfo from './ProductInfo';
+import img1 from '../../assets/1.jpg';
+import img2 from '../../assets/2.jpg';
+import './Product.scss';
 
 export default {
   name: 'Product',
   components: {
     Image,
-    Info,
-    Variant
+    ProductInfo
   },
   data() {
     return {
       selectedVariant: {},
+      imgSrc: null
     };
+  },
+  mounted() {
+    this.selectedVariant = this.Variants[0]
+    this.imgSrc = img1;
   },
   methods: {
     updateSelectedVariant(id) {
       this.selectedVariant = this.Variants.find(variant => variant.id === id)
+      if (id === 1) {
+        this.imgSrc = img1;
+      } else {
+        this.imgSrc = img2;
+      }
     }
   },
   computed: {

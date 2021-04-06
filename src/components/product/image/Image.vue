@@ -1,15 +1,14 @@
 <template>
-    <img :src="image">
+    <img :src="imgSrc">
 </template>
 
 <script>
-import img1 from '../../../assets/1.jpg';
-// import img2 from '../../../assets/2.jpg';
+
 
 export default {
   name: 'Image',
   props: {
-    image: { default: img1, type: String },
+    imgSrc: { type: String },
   },
 }
 </script>

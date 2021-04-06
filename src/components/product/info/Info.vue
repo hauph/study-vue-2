@@ -1,11 +1,18 @@
 <template>
     <h1>Vue Mastery Socks</h1>
-    <p>info</p>
+    <p class="product-availability">{{availability ? "In Stock" : "Out Stock"}}</p>
+    <p class="product-shipping">Shipping: {{shipping ? "Has Fee" : "Free"}}</p>
+    <p class="product-description" v-html="info"></p>
 </template>
 
 <script>
 export default {
   name: 'Info',
+  props: {
+    availability: {type: Boolean},
+    shipping: {type: Number},
+    info: {type: String}
+  }
 }
 </script>
 
