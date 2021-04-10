@@ -1,13 +1,16 @@
 <template>
-  <div class="product-image">
-    <Image :src="imgSrc" />
+  <div class="product-wrapper">
+    <div class="product-image">
+      <Image :src="imgSrc" />
+    </div>
+    <product-info :variant="selectedVariant" :updateSelectedVar="updateSelectedVariant" @handleClickATC="updateCart"></product-info>
+    <div class="cart"><p>Cart (<span>{{totalInCart}}</span>)</p></div>
   </div>
-  <product-info :variant="selectedVariant"></product-info>
 </template>
 
 <script>
-import Image from './image/Image';
-import ProductInfo from './ProductInfo';
+import Image from './Image/Image';
+import ProductInfo from './ProductInfo/ProductInfo';
 import img1 from '../../assets/1.jpg';
 import img2 from '../../assets/2.jpg';
 import './Product.scss';
@@ -21,7 +24,8 @@ export default {
   data() {
     return {
       selectedVariant: {},
-      imgSrc: null
+      imgSrc: null,
+      totalInCart: 0,
     };
   },
   mounted() {
@@ -30,12 +34,16 @@ export default {
   },
   methods: {
     updateSelectedVariant(id) {
-      this.selectedVariant = this.Variants.find(variant => variant.id === id)
-      if (id === 1) {
+      const _id = Number(id);
+      this.selectedVariant = this.Variants.find(variant => variant.id === _id)
+      if (_id === 1) {
         this.imgSrc = img1;
       } else {
         this.imgSrc = img2;
       }
+    },
+    updateCart() {
+      this.totalInCart += 1;
     }
   },
   computed: {
@@ -48,18 +56,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-} */
+
 </style>

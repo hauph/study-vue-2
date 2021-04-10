@@ -1,6 +1,6 @@
 <template>
     <h1>Vue Mastery Socks</h1>
-    <p class="product-availability">{{availability ? "In Stock" : "Out Stock"}}</p>
+    <p class="product-availability">{{availability ? "In Stock" : "Out of Stock"}}</p>
     <p class="product-shipping">Shipping: {{shipping ? "Has Fee" : "Free"}}</p>
     <p class="product-description" v-html="info"></p>
 </template>
